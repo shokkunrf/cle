@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="todoForm" th:object="${sampleModel}" action="/square" th:action="@{/square}" method="get">
+    <input type="text" name="value" th:value="*{value}">
+    <input type="text" th:value="*{value_square}">
+    <input type="submit" value="送信">
+</form>
+
+</body>
+</html>
