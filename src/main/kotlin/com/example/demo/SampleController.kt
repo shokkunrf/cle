@@ -2,6 +2,7 @@ package com.example.demo
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 
@@ -15,14 +16,18 @@ class SampleController {
     }
 
     @GetMapping("/square")
-    fun default(@ModelAttribute sampleModel: SampleModel, model: Model): String {
+    fun square(@ModelAttribute sampleModel: SampleModel, model: Model): String {
         model.addAttribute("sampleModel",
                 SampleModel(
                         value = sampleModel.value,
                         value_square = sampleModel.value?.times(sampleModel.value!!)
                 )
         )
-        println(sampleModel.value)
         return "sample"
+    }
+
+    @ExceptionHandler
+    fun errorHandler(): String {
+        return "500"
     }
 }
