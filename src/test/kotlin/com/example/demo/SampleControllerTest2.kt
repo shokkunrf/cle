@@ -18,7 +18,7 @@ internal class SampleControllerTest2 {
                 .perform(MockMvcRequestBuilders
                         .get("/")
                         .queryParam("value", "3"))
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection)
+                .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.forwardedUrlTemplate("sample"))
     }
 }
