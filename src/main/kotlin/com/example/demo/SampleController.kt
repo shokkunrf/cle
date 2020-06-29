@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 
 @Controller
-class SampleController {
+class SampleController (
+        private val sampleService: SampleService
+) {
     @GetMapping("/")
     fun default(model: Model): String {
         val sampleModel = SampleModel(0, 0)
@@ -20,7 +22,7 @@ class SampleController {
         model.addAttribute("sampleModel",
                 SampleModel(
                         value = sampleModel.value,
-                        value_square = sampleModel.value?.times(sampleModel.value!!)
+                        value_square = sampleService.square(sampleModel.value)
                 )
         )
         return "sample"
